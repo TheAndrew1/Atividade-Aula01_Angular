@@ -3,16 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { IndexComponent } from './index/index.component';
-import { MenuComponent } from './menu/menu.component';
-import { ListaComponent } from './lista/lista.component';
+import { IndexComponent } from './layout/index/index.component';
+import { ListaComponent } from './pessoa/lista/lista.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { LoginComponent } from './sistema/login/login.component';
+import { DetalhesComponent } from './pessoa/detalhes/detalhes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
-    MenuComponent,
-    ListaComponent
+    ListaComponent,
+    HeaderComponent,
+    FooterComponent,
+    LoginComponent,
+    DetalhesComponent
   ],
   imports: [
     BrowserModule,

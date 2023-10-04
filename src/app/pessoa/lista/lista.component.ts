@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pessoa } from '../model/pessoaModel';
+import { Pessoa } from 'src/app/pessoa/pessoaModel';
 
 @Component({
   selector: 'app-lista',
