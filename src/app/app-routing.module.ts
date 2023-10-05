@@ -10,7 +10,7 @@ import { LivroListComponent } from './livro/livro-list/livro-list.component';
 import { LivroDetailComponent } from './livro/livro-detail/livro-detail.component';
 
 const routes: Routes = [
-  {path: "", component: IndexComponent},
+  {path: "", redirectTo: "login", pathMatch: "full"},
   {path: "login", component: LoginComponent},
   {path: "admin", component: IndexComponent, children:[
     {path: "pessoas", component: PessoaListComponent},

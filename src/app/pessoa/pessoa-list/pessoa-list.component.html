@@ -3,12 +3,14 @@
         <tr>
             <th>Nome</th>
             <th>Idade</th>
+            <th>Opções</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let pessoa of pessoas">
             <td *ngIf="pessoa.idade < 30">{{ pessoa.nome }}</td>
             <td *ngIf="pessoa.idade < 30">{{ pessoa.idade }}</td>
+            <td *ngIf="pessoa.idade < 30"><button>Detalhes</button></td>
         </tr>
     </tbody>
 </table>
