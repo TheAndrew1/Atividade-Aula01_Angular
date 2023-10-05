@@ -13,6 +13,7 @@ import { CarroListComponent } from './carro/carro-list/carro-list.component';
 import { CarroDetailComponent } from './carro/carro-detail/carro-detail.component';
 import { LivroDetailComponent } from './livro/livro-detail/livro-detail.component';
 import { LivroListComponent } from './livro/livro-list/livro-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { LivroListComponent } from './livro/livro-list/livro-list.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

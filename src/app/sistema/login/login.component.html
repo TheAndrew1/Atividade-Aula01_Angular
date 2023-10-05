@@ -1,1 +1,24 @@
-<p>login works!</p>
+<form class="col-4 m-auto mt-3">
+    <div class="mb-3">
+        <label for="login" class="form-label">Usuario:</label>
+        <input type="text"
+        class="form-control" id="login" aria-describedby="helpId" autocomplete="off">
+        <!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
+    </div>
+
+    <div class="mb-3">
+        <label for="senha" class="form-label">Senha:</label>
+        <input type="text"
+            class="form-control" id="senha" aria-describedby="helpId" autocomplete="off">
+        <!-- <small id="helpId" class="form-text text-muted">Help text</small> -->
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <input routerLink="/admin/pessoas" class="btn btn-success col" type="button" value="Entrar">
+        </div>
+        <div class="col">
+            <input class="btn btn-outline-secondary col" type="button" value="Limpar">
+        </div>
+    </div>
+</form>
