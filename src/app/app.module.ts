@@ -14,6 +14,7 @@ import { CarroDetailComponent } from './carro/carro-detail/carro-detail.componen
 import { LivroDetailComponent } from './livro/livro-detail/livro-detail.component';
 import { LivroListComponent } from './livro/livro-list/livro-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     NgbModule
   ],
