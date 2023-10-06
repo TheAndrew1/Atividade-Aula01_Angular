@@ -1,16 +1,37 @@
-<table>
+<div class="conteiner my-2">
+    <div class="row justify-content-end">
+        <div class="col-1">
+            <input class="btn btn-primary" type="button" value="Adicionar" (click)="abrirModal(modal)">
+        </div>
+    </div>
+</div>
+
+<table class="m-auto">
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>Idade</th>
-            <th>Opções</th>
+            <th class="w-25 text-center">Nome</th>
+            <th class="w-25 text-center">Idade</th>
+            <th class="w-25 text-center">Opções</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let pessoa of pessoas">
-            <td *ngIf="pessoa.idade < 30">{{ pessoa.nome }}</td>
-            <td *ngIf="pessoa.idade < 30">{{ pessoa.idade }}</td>
-            <td *ngIf="pessoa.idade < 30"><button>Detalhes</button></td>
+            <td class="w-25 text-center">{{ pessoa.nome }}</td>
+            <td class="w-25 text-center">{{ pessoa.idade }}</td>
+            <td class="w-25 text-center"><input class="btn btn-info" type="button" value="Detalhes"></td>
         </tr>
     </tbody>
 </table>
+
+<ng-template #modal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="btn-close" aria-label="Close"(click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <p>CONTEÚDO AQUI</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light"(click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
