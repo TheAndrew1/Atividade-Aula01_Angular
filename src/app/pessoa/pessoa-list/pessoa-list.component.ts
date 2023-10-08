@@ -11,10 +11,12 @@ export class PessoaListComponent {
   modalService = inject(NgbModal);
   
   pessoas: Pessoa[] = [];
+  tipoModal: string = "";
   pessoaSelecionada!: Pessoa;
   indiceSelecionado!: number;
 
-  abrirModal(modal: any, pessoa: any) {
+  abrirModal(modal: any, tipo: string, pessoa: any) {
+    this.tipoModal = tipo;
     this.pessoaSelecionada = pessoa;
     this.modalService.open(modal, { size: 'lg' });
   }

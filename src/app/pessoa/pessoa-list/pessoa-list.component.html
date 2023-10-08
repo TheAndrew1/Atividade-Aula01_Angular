@@ -1,7 +1,7 @@
 <div class="conteiner my-2">
     <div class="row justify-content-end">
         <div class="col-1">
-            <input class="btn btn-primary" type="button" value="Adicionar" (click)="abrirModal(modalAdd, null)">
+            <input class="btn btn-primary" type="button" value="Adicionar" (click)="abrirModal(modal, 'Adicionar', null)">
         </div>
     </div>
 </div>
@@ -18,30 +18,18 @@
         <tr *ngFor="let pessoa of pessoas">
             <td class="w-25 text-center">{{ pessoa.nome }}</td>
             <td class="w-25 text-center">{{ pessoa.idade }}</td>
-            <td class="w-25 text-center"><input class="btn btn-info" type="button" value="Detalhes" (click)="abrirModal(modalEdit, pessoa)"></td>
+            <td class="w-25 text-center"><input class="btn btn-info" type="button" value="Detalhes" (click)="abrirModal(modal, 'Editar', pessoa)"></td>
         </tr>
     </tbody>
 </table>
 
-<ng-template #modalAdd let-modal>
+<ng-template #modal let-modal>
     <div class="modal-header">
-        <h4 class="modal-title">Adicionar nova pessoa</h4>
+        <h4 class="modal-title">{{ tipoModal }} pessoa</h4>
         <button type="button" class="btn-close" aria-label="Close"(click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
         <app-pessoa-detail (retorno)="adicionarPessoa($event)"></app-pessoa-detail>
-    </div>
-    <div class="modal-footer">
-    </div>
-</ng-template>
-
-<ng-template #modalEdit let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title">Editar pessoa</h4>
-        <button type="button" class="btn-close" aria-label="Close"(click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-        <app-pessoa-detail [pessoa] = pessoaSelecionada></app-pessoa-detail>
     </div>
     <div class="modal-footer">
     </div>
