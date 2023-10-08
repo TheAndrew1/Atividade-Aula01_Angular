@@ -11,22 +11,14 @@ export class PessoaListComponent {
   modalService = inject(NgbModal);
   
   pessoas: Pessoa[] = [];
-
-  constructor(){
-    this.pessoas = [
-      new Pessoa("Andre", 21),
-      new Pessoa("Frederico", 21),
-      new Pessoa("Andrei", 19),
-      new Pessoa("Cleyton", 25),
-      new Pessoa("João", 35),
-      new Pessoa("Luis", 27),
-      new Pessoa("Julia", 23),
-      new Pessoa("Jorge", 81),
-      new Pessoa("Maria", 30),
-      new Pessoa("Cleber", 18)]
-  }
+  pessoaSelecionada!: Pessoa;
+  indiceSelecionado!: number;
 
   abrirModal(modal: any) {
     this.modalService.open(modal, { size: 'lg' });
+  }
+
+  adicionarPessoa(pessoa: Pessoa){
+    this.pessoas.push(pessoa);
   }
 }
