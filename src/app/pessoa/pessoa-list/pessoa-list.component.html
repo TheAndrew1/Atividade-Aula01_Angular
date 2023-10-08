@@ -1,7 +1,7 @@
 <div class="conteiner my-2">
     <div class="row justify-content-end">
         <div class="col-1">
-            <input class="btn btn-primary" type="button" value="Adicionar" (click)="abrirModal(modalAdd)">
+            <input class="btn btn-primary" type="button" value="Adicionar" (click)="abrirModal(modalAdd, null)">
         </div>
     </div>
 </div>
@@ -18,7 +18,7 @@
         <tr *ngFor="let pessoa of pessoas">
             <td class="w-25 text-center">{{ pessoa.nome }}</td>
             <td class="w-25 text-center">{{ pessoa.idade }}</td>
-            <td class="w-25 text-center"><input class="btn btn-info" type="button" value="Detalhes" (click)="abrirModal(modalEdit)"></td>
+            <td class="w-25 text-center"><input class="btn btn-info" type="button" value="Detalhes" (click)="abrirModal(modalEdit, pessoa)"></td>
         </tr>
     </tbody>
 </table>

@@ -14,7 +14,8 @@ export class PessoaListComponent {
   pessoaSelecionada!: Pessoa;
   indiceSelecionado!: number;
 
-  abrirModal(modal: any) {
+  abrirModal(modal: any, pessoa: any) {
+    this.pessoaSelecionada = pessoa;
     this.modalService.open(modal, { size: 'lg' });
   }
 
