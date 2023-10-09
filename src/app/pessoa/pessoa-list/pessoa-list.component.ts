@@ -10,18 +10,26 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class PessoaListComponent {
   modalService = inject(NgbModal);
   
-  pessoas: Pessoa[] = [];
+  pessoas: Array<Pessoa> = new Array<Pessoa>();
   tipoModal: string = "";
   pessoaSelecionada!: Pessoa;
-  indiceSelecionado!: number;
+  indiceSelecionado: number = -1;
 
   abrirModal(modal: any, tipo: string, pessoa: any) {
     this.tipoModal = tipo;
     this.pessoaSelecionada = pessoa;
+    this.indiceSelecionado = this.pessoas.indexOf(this.pessoaSelecionada);
     this.modalService.open(modal, { size: 'lg' });
   }
 
   adicionarPessoa(pessoa: Pessoa){
-    this.pessoas.push(pessoa);
+    if(this.indiceSelecionado != -1){
+      this.pessoas.splice(this.indiceSelecionado, 1, pessoa);
+
+      this.pessoaSelecionada = new Pessoa();
+      this.indiceSelecionado = -1;
+    }else{
+      this.pessoas.push(pessoa);
+    }
   }
 }
