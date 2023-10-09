@@ -1,1 +1,20 @@
-<p>carro-detail works!</p>
+<form class="col-4 m-auto">
+    <div class="mb-3">
+        <label for="modelo" class="form-label">Modelo:</label>
+        <input type="text"class="form-control" id="modelo" aria-describedby="helpId" autocomplete="off" [(ngModel)]="carro.modelo" name="modelo">
+    </div>
+
+    <div class="mb-3">
+        <label for="ano" class="form-label">Ano:</label>
+        <input type="number" class="form-control" id="ano" aria-describedby="helpId" autocomplete="off" [(ngModel)]="carro.ano" name="ano">
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <input class="btn btn-success col" type="button" value="Salvar" (click)="cadastrar()">
+        </div>
+        <div class="col">
+            <input class="btn btn-outline-secondary col" type="reset" value="Limpar">
+        </div>
+    </div>
+</form>
