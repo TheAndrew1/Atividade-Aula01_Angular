@@ -1,1 +1,36 @@
-<p>livro-list works!</p>
+<div class="conteiner my-2">
+    <div class="row justify-content-end">
+        <div class="col-1">
+            <input class="btn btn-primary" type="button" value="Adicionar" (click)="abrirModal(modal, 'Adicionar', null)">
+        </div>
+    </div>
+</div>
+
+<table class="m-auto">
+    <thead>
+        <tr>
+            <th class="w-25 text-center">Titulo</th>
+            <th class="w-25 text-center">Autor</th>
+            <th class="w-25 text-center">Opções</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let livro of livros">
+            <td class="w-25 text-center">{{ livro.titulo }}</td>
+            <td class="w-25 text-center">{{ livro.autor }}</td>
+            <td class="w-25 text-center"><input class="btn btn-info" type="button" value="Detalhes" (click)="abrirModal(modal, 'Editar', livro)"></td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #modal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">{{ tipoModal }} livro</h4>
+        <button type="button" class="btn-close" aria-label="Close"(click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-livro-detail (retorno)="adicionarLivro($event)" [entrada] = "livroSelecionado"></app-livro-detail>
+    </div>
+    <div class="modal-footer">
+    </div>
+</ng-template>
