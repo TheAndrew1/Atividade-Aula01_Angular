@@ -35,14 +35,4 @@ export class PessoaListComponent{
     this.pessoaSelecionada = pessoa;
     this.modalService.open(modal, { size: 'lg' });
   }
-
-  atualizarLista(){
-    this.pessoaService.listAll().subscribe({
-      next: resposta => {
-        this.pessoas = resposta
-      }, 
-      error: erro => 
-        console.log(erro)
-      });
-  }
 }

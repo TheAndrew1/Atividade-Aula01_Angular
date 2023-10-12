@@ -31,7 +31,7 @@
         <button type="button" class="btn-close" aria-label="Close"(click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-        <app-pessoa-detail (retorno)="atualizarLista()" [entrada] = "pessoaSelecionada"></app-pessoa-detail>
+        <app-pessoa-detail (retorno)="listAll()" [entrada] = "pessoaSelecionada"></app-pessoa-detail>
     </div>
     <div class="modal-footer">
     </div>

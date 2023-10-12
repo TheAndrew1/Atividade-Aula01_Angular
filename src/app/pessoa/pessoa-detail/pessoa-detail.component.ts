@@ -17,15 +17,15 @@ export class PessoaDetailComponent implements OnInit{
   @Output() retorno = new EventEmitter<Pessoa>();
 
   ngOnInit(): void {
-      if(this.entrada != null){
-        this.pessoaService.findById(this.entrada.id).subscribe({
-          next: resposta => {
-            this.pessoa = resposta
-          }, 
-          error: erro => 
-            console.log(erro)
-          });
-      }
+    if(this.entrada != null){
+      this.pessoaService.findById(this.entrada.id).subscribe({
+        next: resposta => {
+          this.pessoa = resposta
+        }, 
+        error: erro => 
+          console.log(erro)
+        });
+    }
   }
 
   salvar(){

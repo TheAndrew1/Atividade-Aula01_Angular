@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Carro } from '../carroModel';
+import { CarroService } from '../carro.service';
 
 @Component({
   selector: 'app-carro-list',
@@ -9,27 +10,29 @@ import { Carro } from '../carroModel';
 })
 export class CarroListComponent {
   modalService = inject(NgbModal);
+  carroService = inject(CarroService);
   
   carros: Array<Carro> = new Array<Carro>();
   tipoModal: string = "";
   carroSelecionado!: Carro;
-  indiceSelecionado: number = -1;
 
-  abrirModal(modal: any, tipo: string, livro: any) {
-    this.tipoModal = tipo;
-    this.carroSelecionado = livro;
-    this.indiceSelecionado = this.carros.indexOf(this.carroSelecionado);
-    this.modalService.open(modal, { size: 'lg' });
+  constructor() {
+    this.listAll();
   }
 
-  adicionarLivro(carro: Carro){
-    if(this.indiceSelecionado != -1){
-      this.carros.splice(this.indiceSelecionado, 1, carro);
+  listAll(){
+    this.carroService.listAll().subscribe({
+      next: resposta => {
+        this.carros = resposta
+      }, 
+      error: erro => 
+        console.log(erro)
+      });
+  }
 
-      this.carroSelecionado = new Carro();
-      this.indiceSelecionado = -1;
-    }else{
-      this.carros.push(carro);
-    }
+  abrirModal(modal: any, tipo: string, carro: any) {
+    this.tipoModal = tipo;
+    this.carroSelecionado = carro;
+    this.modalService.open(modal, { size: 'lg' });
   }
 }

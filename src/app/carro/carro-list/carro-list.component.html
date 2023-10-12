@@ -9,6 +9,7 @@
 <table class="m-auto">
     <thead>
         <tr>
+            <th class="w-25 text-center">Id</th>
             <th class="w-25 text-center">Modelo</th>
             <th class="w-25 text-center">Ano</th>
             <th class="w-25 text-center">Opções</th>
@@ -16,6 +17,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let carro of carros">
+            <td class="w-25 text-center">{{ carro.id }}</td>
             <td class="w-25 text-center">{{ carro.modelo }}</td>
             <td class="w-25 text-center">{{ carro.ano }}</td>
             <td class="w-25 text-center"><input class="btn btn-info" type="button" value="Detalhes" (click)="abrirModal(modal, 'Editar', carro)"></td>
@@ -29,7 +31,7 @@
         <button type="button" class="btn-close" aria-label="Close"(click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-        <app-carro-detail (retorno)="adicionarLivro($event)" [entrada] = "carroSelecionado"></app-carro-detail>
+        <app-carro-detail (retorno)="listAll()" [entrada] = "carroSelecionado"></app-carro-detail>
     </div>
     <div class="modal-footer">
     </div>
