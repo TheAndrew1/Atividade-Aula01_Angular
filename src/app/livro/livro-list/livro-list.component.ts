@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Livro } from '../livroModel';
+import { LivroService } from '../livro.service';
 
 @Component({
   selector: 'app-livro-list',
@@ -9,27 +10,29 @@ import { Livro } from '../livroModel';
 })
 export class LivroListComponent {
   modalService = inject(NgbModal);
+  livroService = inject(LivroService);
   
   livros: Array<Livro> = new Array<Livro>();
   tipoModal: string = "";
   livroSelecionado!: Livro;
-  indiceSelecionado: number = -1;
+
+  constructor() {
+    this.listAll();
+  }
+
+  listAll(){
+    this.livroService.listAll().subscribe({
+      next: resposta => {
+        this.livros = resposta
+      }, 
+      error: erro => 
+        console.log(erro)
+      });
+  }
 
   abrirModal(modal: any, tipo: string, livro: any) {
     this.tipoModal = tipo;
     this.livroSelecionado = livro;
-    this.indiceSelecionado = this.livros.indexOf(this.livroSelecionado);
     this.modalService.open(modal, { size: 'lg' });
-  }
-
-  adicionarLivro(livro: Livro){
-    if(this.indiceSelecionado != -1){
-      this.livros.splice(this.indiceSelecionado, 1, livro);
-
-      this.livroSelecionado = new Livro();
-      this.indiceSelecionado = -1;
-    }else{
-      this.livros.push(livro);
-    }
   }
 }

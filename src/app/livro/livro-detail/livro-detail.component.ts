@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Livro } from '../livroModel';
+import { LivroService } from '../livro.service';
 
 @Component({
   selector: 'app-livro-detail',
@@ -12,16 +13,39 @@ export class LivroDetailComponent {
   @Input() entrada!: Livro;
   livro: Livro = new Livro();
   @Output() retorno = new EventEmitter<Livro>();
+  livroService = inject(LivroService);
 
   ngOnInit(): void {
-      if(this.entrada != null){
-        this.livro = this.entrada;
-      }
+    this.livroService.findById(this.entrada.id).subscribe({
+      next: resposta => {
+        this.livro = resposta
+      }, 
+      error: erro => 
+        console.log(erro)
+      });
   }
 
-  cadastrar(){
+  salvar(){
     if(this.livro.titulo != null && this.livro.titulo != "" && this.livro.autor != null && this.livro.autor != ""){
-      this.retorno.emit(this.livro);
+      if(this.livro.id == null){
+        this.livroService.save(this.livro).subscribe({
+          next: livro => {
+            this.retorno.emit(livro);
+          },
+          error: erro => {
+            console.error(erro);
+          }
+        });
+      }else{
+        this.livroService.edit(this.livro.id, this.livro).subscribe({
+          next: livro => {
+            this.retorno.emit(livro);
+          },
+          error: erro => {
+            console.error(erro);
+          }
+        });
+      }
     }else{
       alert("Titulo e/ou autor inválido!");
     }
