@@ -12,8 +12,12 @@ export class PessoaService {
 
   constructor() { }
 
+  findById(id: number): Observable<Pessoa> {
+    return this.http.get<Pessoa>(this.API + "?id=" + id); 
+  }
+
   listAll(): Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(this.API); 
+    return this.http.get<Pessoa[]>(this.API + "/lista"); 
   }
 
   save(pessoa: Pessoa): Observable<Pessoa> {
@@ -21,14 +25,14 @@ export class PessoaService {
   }
 
   edit(id: number, pessoa: Pessoa): Observable<Pessoa> {
-    return this.http.put<Pessoa>(this.API+"?id="+id, pessoa);
+    return this.http.put<Pessoa>(this.API + "?id=" + id, pessoa);
   }
 
   delete(id: number): Observable<Pessoa> {
-    return this.http.delete<Pessoa>(this.API+"?id="+id);
+    return this.http.delete<Pessoa>(this.API + "?id=" + id);
   }
 
   exemploErro(): Observable<Pessoa[]> {
-    return this.http.get<Pessoa[]>(this.API + '/erro');
+    return this.http.get<Pessoa[]>(this.API + "/erro");
   }
 }
